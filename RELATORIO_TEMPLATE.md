@@ -22,7 +22,7 @@ E o write é capaz de escrever, além de texto, dados binários, comtrolar quand
 
 **3. Qual método é mais previsível? Por quê você acha isso?**
 
-```
+```aa
 [Sua análise aqui]
 ```
 
