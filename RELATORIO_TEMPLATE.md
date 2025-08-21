@@ -21,18 +21,13 @@ Há diferença, pois o printf é capaz de escrever textos para o usuário, forma
 E o write é capaz de escrever, além de texto, dados binários, comtrolar quando enviar os dados e possui um comportamento previsível.
 
 **3. Qual método é mais previsível? Por quê você acha isso?**
-
-```aa
-[Sua análise aqui]
-```
-
----
+O método mais previsível é o write, pois toda vez que ela é chamada resulta em uma syscall. Além disso, ao utilizar esse método, obtém-se controle total sobre o momento de envio dos dados. Dessa forma permitindo saber o que e quando as operacoes estao acontecendo.
 
 ## 2️⃣ Exercício 2 - Leitura de Arquivo
 
 ### 📊 Resultados da execução:
-- File descriptor: _____
-- Bytes lidos: _____
+- File descriptor: 3
+- Bytes lidos: 127
 
 ### 🔧 Comando strace:
 ```bash
@@ -42,16 +37,11 @@ strace -e openat,read,close ./ex2_leitura
 ### 🔍 Análise
 
 **1. Qual file descriptor foi usado? Por que não começou em 0, 1 ou 2?**
-
-```
-[Sua análise aqui]
-```
+O file descriptor utilizado foi o 3, pois é o próximo disponível após o processo de open. O sistema operacional cria automaticamente os file descriptors 0, 1 e 2, que correspondem, respectivamente, ao standard input, standard output e standard error. Esses são alocados antes da abertura do arquivo dados/teste1.txt, o que explica por que o próximo descriptor atribuído é o 3.
 
 **2. Como você sabe que o arquivo foi lido completamente?**
 
-```
-[Sua análise aqui]
-```
+O indicativo é que, além de exibir mensagens que o arquivo foi aberto e fechado, também é mostrada a quantidade de bytes lidos, o que mostra que o arquivo foi lido completamente.
 
 **3. Por que verificar retorno de cada syscall?**
 
