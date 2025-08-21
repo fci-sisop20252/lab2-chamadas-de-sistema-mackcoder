@@ -45,11 +45,7 @@ O indicativo é que, além de exibir mensagens que o arquivo foi aberto e fechad
 
 **3. Por que verificar retorno de cada syscall?**
 
-```
-[Sua análise aqui]
-```
-
----
+É essencial para verificar se todos os programas inseridos estao sendo executados corretamente e que não houve um erro de leitura do arquivo ou outros diveros erros em algum momento do processo.
 
 ## 3️⃣ Exercício 3 - Contador com Loop
 
