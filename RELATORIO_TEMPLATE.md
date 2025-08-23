@@ -50,19 +50,19 @@ O indicativo é que, além de exibir mensagens que o arquivo foi aberto e fechad
 ## 3️⃣ Exercício 3 - Contador com Loop
 
 ### 📋 Resultados (BUFFER_SIZE = 64):
-- Linhas: _____ (esperado: 25)
-- Caracteres: _____
-- Chamadas read(): _____
-- Tempo: _____ segundos
+- Linhas: 25.
+- Caracteres: 1300
+- Chamadas read(): 21
+- Tempo: 0.000140 segundos
 
 ### 🧪 Experimentos com buffer:
 
 | Buffer Size | Chamadas read() | Tempo (s) |
 |-------------|-----------------|-----------|
-| 16          |                 |           |
-| 64          |                 |           |
-| 256         |                 |           |
-| 1024        |                 |           |
+| 16          |       82        | 0.000093  |
+| 64          |       21        | 0.000140  |
+| 256         |        6        | 0.000042  |
+| 1024        |        2        | 0.000048  |
 
 ### 🔍 Análise
 
