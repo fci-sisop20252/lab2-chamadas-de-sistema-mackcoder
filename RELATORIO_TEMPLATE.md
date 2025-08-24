@@ -118,28 +118,19 @@ A quantidade de reads é igual à de writes, porque as operações de leitura e 
   No sistema o uso de chamadas syscalls, como read e write, sao um dos comandos que o usuario possui para solicitar serviços do sistema operacional. Toda vez que um asyscall é executada, essa instruções interrompe o fluxo normal (modo usuario) e transfere o controle para o kernel.
 
 **2. Qual é o seu entendimento sobre a importância dos file descriptors?**
-  Os files descriptors sao importantes para realizar deicar operações como read, write, close funcionarem de forma uniforme, pelo fato de tudo ser tratado como um arquivo, que seja um arquivo, conexao de rede, etc.
+  Os files descriptors sao importantes para realizar operações como read, write, close funcionarem de forma uniforme, pelo fato de tudo ser tratado como um arquivo, que seja uma conexao de rede, dispositivos .
 
 **3. Discorra sobre a relação entre o tamanho do buffer e performance:**
   Foi observado que com os exercicios praticos que o buffer tem a funcao de armazernar bytes. E quanto maior era seu armazenamento para, tanto como transferencia de dados, quanto para copia de dados, sua performance aumentava pelo fato de 
 
 ### ⚡ Comparação de Performance
+  Ao realizar o experimento com diferentes tamanhos de buffer, observou-se que buffers pequenos (64 e 256 bytes) não impactam significativamente o tempo de execução, mas com buffers maiores (1024 e 4096 bytes), o tempo melhora, sendo que o comando cp do sistema se mostrou mais eficiente que o programa 'ex4_copia'.
 
-```bash
-# Teste seu programa vs cp do sistema
-time ./ex4_copia
-time cp dados/origem.txt dados/destino_cp.txt
-```
-
-**Qual foi mais rápido?** _____
+**Qual foi mais rápido?** 
+  Na maior parte dos casos, o comando cp teve uma performance mais rapida em relacao ao programa 'ex4_copia'.
 
 **Por que você acha que foi mais rápido?**
-
-```
-[Sua análise aqui]
-```
-
----
+  A performance do comando cp foi mais rápida pelo fato de ser capaz de realizar cópias diretas entre arquivos, sem a necessidade de sincronização de dados; dessa forma, não sobrecarrega o sistema e leva menos tempo para realizar a operação
 
 ## 📤 Entrega
 Certifique-se de ter:
