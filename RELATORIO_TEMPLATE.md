@@ -67,32 +67,24 @@ O indicativo é que, além de exibir mensagens que o arquivo foi aberto e fechad
 ### 🔍 Análise
 
 **1. Como o tamanho do buffer afeta o número de syscalls?**
-
-```
-[Sua análise aqui]
-```
+  Foi observado que, quanto maior o tamanho do buffer size, menos chamadas são necessárias para realizar a leitura. Isso ocorre porque buffers maiores são capazes de interpretar mais informação e precisam de menos camadas para completar o processo de leitura.
 
 **2. Todas as chamadas read() retornaram BUFFER_SIZE bytes? Discorra brevemente sobre**
 
-```
-[Sua análise aqui]
-```
+Nem todas as chamadas read() retornaram o BUFFER_SIZE. Isso acontece, pois no final da leitura do arquivo, nao havia espaco ou dados suficiente para preencher o buffer.
 
 **3. Qual é a relação entre syscalls e performance?**
-
-```
-[Sua análise aqui]
-```
+  A relação é que, quanto menos chamadas de sistema são feitas, melhor é a performance de um sistema, porque, além de as chamadas exigirem um processamento mais pesado, toda vez que ela é feita, o processador deve trocar para o modo kernel, o que consome muito tempo.
 
 ---
 
 ## 4️⃣ Exercício 4 - Cópia de Arquivo
 
 ### 📈 Resultados:
-- Bytes copiados: _____
-- Operações: _____
-- Tempo: _____ segundos
-- Throughput: _____ KB/s
+- Bytes copiados: 1364
+- Operações: 6
+- Tempo: 0.000231 segundos
+- Throughput: 5766.37 KB/s
 
 ### ✅ Verificação:
 ```bash
@@ -103,35 +95,19 @@ Resultado: [ ] Idênticos [ ] Diferentes
 ### 🔍 Análise
 
 **1. Por que devemos verificar que bytes_escritos == bytes_lidos?**
-
-```
-[Sua análise aqui]
-```
+  Para confirmar que que o conteudo que se deseja ser copiado para outro arquivo não tenha sido perdido. E essencial para verificar a integridade dos dados.
 
 **2. Que flags são essenciais no open() do destino?**
-
-```
-[Sua análise aqui]
-```
+  Os flags essenciais são: O_WRONLY | O_CREAT | O_TRUNC, 0644.
 
 **3. O número de reads e writes é igual? Por quê?**
-
-```
-[Sua análise aqui]
-```
+A quantidade de reads é igual à de writes, porque as operações de leitura e escrita estão copiando o conteúdo do arquivo de origem para o de destino, bloco por bloco. Além disso, se executarmos o comando strace -T -e read,write ./ex4_copia, é possível observar que, nas chamadas de sistema para copiar o conteúdo e escrevê-lo, há a mesma quantidade de operações de read e write 
 
 **4. Como você saberia se o disco ficou cheio?**
-
-```
-[Sua análise aqui]
-```
-
+  O indicativo seria checar se a chamada write() do programa retorna -1. Isso significaria que o disco ficou cheio.
+  
 **5. O que acontece se esquecer de fechar os arquivos?**
-
-```
-[Sua análise aqui]
-```
-
+  Os arquivos podem sofrer um tipo de corrupcao de arquivo, perda de dados, uso excessivo de recursos e podem ficar bloqueados para outros processos.
 ---
 
 ## 🎯 Análise Geral
@@ -140,15 +116,10 @@ Resultado: [ ] Idênticos [ ] Diferentes
 
 **1. Como as syscalls demonstram a transição usuário → kernel?**
 
-```
-[Sua análise aqui]
-```
 
 **2. Qual é o seu entendimento sobre a importância dos file descriptors?**
 
-```
-[Sua análise aqui]
-```
+
 
 **3. Discorra sobre a relação entre o tamanho do buffer e performance:**
 
