@@ -101,7 +101,7 @@ Resultado: [ 1364 ] Idênticos [ 0 ] Diferentes
   Os flags essenciais são: O_WRONLY | O_CREAT | O_TRUNC, 0644.
 
 **3. O número de reads e writes é igual? Por quê?**
-A quantidade de reads é igual à de writes, porque as operações de leitura e escrita estão copiando o conteúdo do arquivo de origem para o de destino, bloco por bloco. Além disso, se executarmos o comando strace -T -e read,write ./ex4_copia, é possível observar que, nas chamadas de sistema para copiar o conteúdo e escrevê-lo, há a mesma quantidade de operações de read e write 
+A quantidade de reads é igual à de writes, porque as operações de leitura e escrita estão copiando o conteúdo do arquivo de origem para o de destino, bloco por bloco. Além disso, se executarmos o comando strace -T -e read,write ./ex4_copia, é possível observar que, nas chamadas de sistema para copiar o conteúdo e escrevê-lo, há a mesma quantidade de operações de read e write.
 
 **4. Como você saberia se o disco ficou cheio?**
   O indicativo seria checar se a chamada write() do programa retorna -1. Isso significaria que o disco ficou cheio.
@@ -121,7 +121,7 @@ A quantidade de reads é igual à de writes, porque as operações de leitura e 
   Os files descriptors sao importantes para realizar operações como read, write, close funcionarem de forma uniforme, pelo fato de tudo ser tratado como um arquivo, que seja uma conexao de rede, dispositivos entre outros.
 
 **3. Discorra sobre a relação entre o tamanho do buffer e performance:**
-  Foi observado que com os exercicios praticos que o buffer tem a funcao de armazernar bytes. E quanto maior era seu armazenamento para, tanto como transferencia de dados, quanto para copia de dados, sua performance aumentava pelo fato de 
+  Foi observado que com os exercicios praticos que o buffer tem a funcao de armazernar bytes. E quanto maior era seu armazenamento para, tanto como transferencia de dados, quanto para copia de dados, sua performance aumentava.
 
 ### ⚡ Comparação de Performance
   Ao realizar o experimento com diferentes tamanhos de buffer, observou-se que buffers pequenos (64 e 256 bytes) não impactam significativamente o tempo de execução, mas com buffers maiores (1024 e 4096 bytes), o tempo melhora, sendo que o comando cp do sistema se mostrou mais eficiente que o programa 'ex4_copia'.
@@ -130,7 +130,7 @@ A quantidade de reads é igual à de writes, porque as operações de leitura e 
   Na maior parte dos casos, o comando cp teve uma performance mais rapida em relacao ao programa 'ex4_copia'.
 
 **Por que você acha que foi mais rápido?**
-  A performance do comando cp foi mais rápida pelo fato de ser capaz de realizar cópias diretas entre arquivos, sem a necessidade de sincronização de dados; dessa forma, não sobrecarrega o sistema e leva menos tempo para realizar a operação
+  A performance do comando cp foi mais rápida pelo fato de ser capaz de realizar cópias diretas entre arquivos, sem a necessidade de sincronização de dados; dessa forma, não sobrecarrega o sistema e leva menos tempo para realizar a operação.
 
 ## 📤 Entrega
 Certifique-se de ter:
